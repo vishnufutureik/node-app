@@ -12,7 +12,7 @@ app.use(express.json());
 
 // ✅ MongoDB connection
 mongoose
-  .connect("mongodb+srv://vishnu_db_user:YxYpxcR1CwfC0SkE@test.gnrv9gg.mongodb.net/?appName=test")
+  .connect(`mongodb+srv://vishnu_db_user:${process.env.MONGO_PASSWORD}@test.gnrv9gg.mongodb.net/?appName=test`)
   .then(() => console.log("✅ MongoDB Connected"))
   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
 
@@ -40,34 +40,7 @@ app.get("/api/users", async (req, res) => {
 });
 
 // ✅ Server start
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
 
 
-// import express from "express";
-// import mongoose from "mongoose";
-// import cors from "cors";
-// import dotenv from "dotenv";
-
-// dotenv.config();
-
-// const app = express();
-
-// // Middleware
-// app.use(cors());
-// app.use(express.json());
-
-// // Connect to MongoDB
-// mongoose
-//   .connect("mongodb+srv://vishnu_db_user:YxYpxcR1CwfC0SkE@test.gnrv9gg.mongodb.net/?appName=test")
-//   .then(() => console.log("✅ MongoDB Connected"))
-//   .catch((err) => console.error("❌ MongoDB Connection Error:", err));
-
-// // Basic Route
-// app.get("/", (req, res) => {
-//   res.send("🚀 Node + Express + MongoDB Server is Running!");
-// });
-
-// // Start server
-// const PORT = process.env.PORT || 5000;
-// app.listen(PORT, () => console.log(`✅ Server running on port ${PORT}`));
